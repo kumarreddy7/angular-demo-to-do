@@ -53,7 +53,7 @@
         <mat-card-content>
           <div class="task-content">
             <h3 [ngClass]="{ completed: task.completed }">{{ task.title }}</h3>
-            <p>Due: {{ task.dueDate | date : "shortDate" }}</p>
+            <p>Due: {{ task.dueDate | date : "fullDate" }}</p>
             <p>Priority: {{ task.priority }}</p>
           </div>
           <div class="task-actions">

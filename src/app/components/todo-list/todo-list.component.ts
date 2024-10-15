@@ -56,7 +56,7 @@ export class TodoListComponent {
 
   addTask() {
     // Check if the selected date is in the past
-    if (this.newTaskDueDate && this.newTaskDueDate < new Date()) {
+    if (this.newTaskDueDate && this.newTaskDueDate <= new Date()) {
       this.warningMessage = 'Please select a due date that is today or in the future.';
       return; // Stop the task addition
     }

@@ -4,19 +4,19 @@
       <h2>To-Do List</h2>
     </mat-card-title>
   </mat-card-header>
+  
   <mat-card-content>
     <div class="input-area">
-      <mat-form-field appearance="fill" [ngClass]="{ focused: newTaskTitle }">
+      <mat-form-field appearance="outline" [ngClass]="{ focused: newTaskTitle }">
         <mat-label>Task Title</mat-label>
         <input matInput [(ngModel)]="newTaskTitle" required />
       </mat-form-field>
 
-      <mat-form-field appearance="fill" [ngClass]="{ focused: newTaskDueDate }">
+      <mat-form-field appearance="outline" [ngClass]="{ focused: newTaskDueDate }">
         <mat-label>Due Date</mat-label>
         <input matInput [matDatepicker]="picker" [(ngModel)]="newTaskDueDate" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-
             <mat-error>{{ warningMessage }}</mat-error>
       </mat-form-field>
       <mat-form-field
@@ -27,6 +27,7 @@
           <mat-option value="Low">Low</mat-option>
           <mat-option value="Medium">Medium</mat-option>
           <mat-option value="High">High</mat-option>
+          <mat-option value="Very High">Very High</mat-option>
         </mat-select>
       </mat-form-field>
 

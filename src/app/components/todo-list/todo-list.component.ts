@@ -46,6 +46,7 @@ export class TodoListComponent {
   newTaskTitle: string = '';
   newTaskPriority: string = 'Low'; // Should remain a string
   newTaskDueDate: Date | null = null;
+  
   tasks: Task[] = [];
   filter: 'all' | 'completed' | 'pending' = 'all';
   warningMessage: string = ''; // Property for warning message

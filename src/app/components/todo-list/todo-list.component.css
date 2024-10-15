@@ -1,0 +1,51 @@
+.todo-card {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.task-card {
+  margin: 10px 0;
+  background: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+.low-priority {
+  background-color: rgb(134, 218, 134); 
+}
+
+.medium-priority {
+  background-color: rgb(255, 255, 109);
+}
+
+.high-priority {
+  background-color: rgb(234, 127, 127);
+}
+
+.warning-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }  

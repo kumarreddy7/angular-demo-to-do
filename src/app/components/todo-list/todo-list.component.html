@@ -1,0 +1,73 @@
+<mat-card class="todo-card">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>To-Do List</h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="input-area">
+      <mat-form-field appearance="fill" [ngClass]="{ focused: newTaskTitle }">
+        <mat-label>Task Title</mat-label>
+        <input matInput [(ngModel)]="newTaskTitle" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [ngClass]="{ focused: newTaskDueDate }">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="newTaskDueDate" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Warning message -->
+      <div *ngIf="warningMessage" class="warning-message">
+        {{ warningMessage }}
+      </div>
+
+      <mat-form-field
+        appearance="fill"
+        [ngClass]="{ focused: newTaskPriority }"
+      >
+        <mat-label>Priority</mat-label>
+        <mat-select [(ngModel)]="newTaskPriority">
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="addTask()">
+        Add Task
+      </button>
+    </div>
+
+    <div *ngFor="let task of filteredTasks()" [@taskAnimation]>
+      <mat-card
+        class="task-card"
+        [@taskAnimation]
+        [ngClass]="{
+          'low-priority': task.priority === 'Low',
+          'medium-priority': task.priority === 'Medium',
+          'high-priority': task.priority === 'High'
+        }"
+      >
+        <mat-card-content>
+          <div class="task-content">
+            <h3 [ngClass]="{ completed: task.completed }">{{ task.title }}</h3>
+            <p>Due: {{ task.dueDate | date : "shortDate" }}</p>
+            <p>Priority: {{ task.priority }}</p>
+          </div>
+          <div class="task-actions">
+            <button mat-icon-button (click)="toggleCompletion(task.id)">
+              <mat-icon>{{
+                task.completed ? "check_box" : "check_box_outline_blank"
+              }}</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteTask(task.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-card-content>
+</mat-card>
